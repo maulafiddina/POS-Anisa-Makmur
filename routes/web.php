@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PergerakanStokController;
 use App\Http\Controllers\StokMasukController;
@@ -39,4 +40,9 @@ Route::middleware(['auth', 'owner'])->group(function () {
 
     Route::get('/barang/{barang}/pergerakan-stok', [PergerakanStokController::class, 'index']);
     Route::post('/barang/{barang}/stok-masuk', [StokMasukController::class, 'store']);
+
+    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
+    Route::post('/pengeluaran', [PengeluaranController::class, 'store']);
+    Route::put('/pengeluaran/{pengeluaran}', [PengeluaranController::class, 'update']);
+    Route::delete('/pengeluaran/{pengeluaran}', [PengeluaranController::class, 'destroy']);
 });

@@ -51,11 +51,7 @@
                                 <button type="submit">Simpan</button>
                             </form>
 
-                            <form method="POST" action="/barang/{{ $barang->id }}">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit">Hapus</button>
-                            </form>
+                            @include('partials.hapus-form', ['action' => "/barang/{$barang->id}"])
                         </td>
                     @endif
                 </tr>

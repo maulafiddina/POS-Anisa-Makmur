@@ -13,11 +13,7 @@
                     <button type="submit">Simpan</button>
                 </form>
 
-                <form method="POST" action="/kategori/{{ $kategori->id }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Hapus</button>
-                </form>
+                @include('partials.hapus-form', ['action' => "/kategori/{$kategori->id}"])
             </li>
         @endforeach
     </ul>
