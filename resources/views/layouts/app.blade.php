@@ -7,6 +7,7 @@
 <body>
     @auth
         <nav>
+            <a href="/penjualan">Penjualan</a>
             <a href="/barang">Barang</a>
             @if (auth()->user()->isOwner())
                 <a href="/kategori">Kategori</a>

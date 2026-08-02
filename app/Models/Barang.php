@@ -76,16 +76,37 @@ class Barang extends Model
 
     public function catatStokMasuk(int $jumlah, string $tanggal, ?string $keterangan = null): PergerakanStok
     {
-        $pergerakan = $this->pergerakanStoks()->create([
-            'tipe' => TipePergerakanStok::Masuk,
+        return $this->catatPergerakanStok(TipePergerakanStok::Masuk, $jumlah, $tanggal, keterangan: $keterangan);
+    }
+
+    public function catatStokKeluar(int $jumlah, string $tanggal, ItemPenjualan $itemPenjualan): PergerakanStok
+    {
+        return $this->catatPergerakanStok(
+            TipePergerakanStok::Keluar,
+            $jumlah,
+            $tanggal,
+            itemPenjualan: $itemPenjualan,
+        );
+    }
+
+    private function catatPergerakanStok(
+        TipePergerakanStok $tipe,
+        int $jumlah,
+        string $tanggal,
+        ?string $keterangan = null,
+        ?ItemPenjualan $itemPenjualan = null,
+    ): PergerakanStok {
+        $pergerakanStok = $this->pergerakanStoks()->create([
+            'tipe' => $tipe,
             'jumlah' => $jumlah,
             'tanggal' => $tanggal,
             'keterangan' => $keterangan,
+            'item_penjualan_id' => $itemPenjualan?->id,
         ]);
 
         // Stok yang sudah ikut ter-query lewat `withStok` kini basi.
         unset($this->attributes['stok']);
 
-        return $pergerakan;
+        return $pergerakanStok;
     }
 }
