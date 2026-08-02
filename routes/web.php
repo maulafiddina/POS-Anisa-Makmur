@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PergerakanStokController;
+use App\Http\Controllers\StokMasukController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,4 +32,7 @@ Route::middleware(['auth', 'owner'])->group(function () {
     Route::post('/barang', [BarangController::class, 'store']);
     Route::put('/barang/{barang}', [BarangController::class, 'update']);
     Route::delete('/barang/{barang}', [BarangController::class, 'destroy']);
+
+    Route::get('/barang/{barang}/pergerakan-stok', [PergerakanStokController::class, 'index']);
+    Route::post('/barang/{barang}/stok-masuk', [StokMasukController::class, 'store']);
 });

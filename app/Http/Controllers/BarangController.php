@@ -13,7 +13,7 @@ class BarangController extends Controller
     public function index(): View
     {
         return view('barang.index', [
-            'barangs' => Barang::with('kategori')->orderBy('nama')->get(),
+            'barangs' => Barang::withStok()->with('kategori')->orderBy('nama')->get(),
             'kategoris' => Kategori::orderBy('nama')->get(),
         ]);
     }

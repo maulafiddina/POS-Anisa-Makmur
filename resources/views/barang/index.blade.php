@@ -11,6 +11,7 @@
                 <th>Nama</th>
                 <th>Kategori</th>
                 <th>Harga Jual</th>
+                <th>Stok</th>
                 <th>Stok Minimum</th>
                 @if ($isOwner)
                     <th>Aksi</th>
@@ -23,9 +24,17 @@
                     <td>{{ $barang->nama }}</td>
                     <td>{{ $barang->kategori->nama }}</td>
                     <td>{{ $barang->harga_jual }}</td>
+                    <td data-stok="{{ $barang->stok() }}">
+                        {{ $barang->stok() }}
+                        @if ($barang->stokMenipis())
+                            <strong>Stok menipis</strong>
+                        @endif
+                    </td>
                     <td>{{ $barang->stok_minimum }}</td>
                     @if ($isOwner)
                         <td>
+                            <a href="/barang/{{ $barang->id }}/pergerakan-stok">Pergerakan Stok</a>
+
                             <form method="POST" action="/barang/{{ $barang->id }}">
                                 @csrf
                                 @method('PUT')
