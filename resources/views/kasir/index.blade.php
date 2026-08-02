@@ -1,26 +1,15 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Kelola Kasir - POS Skripsi</title>
-</head>
-<body>
-    <h1>Akun Kasir</h1>
+@extends('layouts.app')
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+@section('title', 'Akun Kasir')
 
+@section('content')
     <ul>
         @foreach ($kasirs as $kasir)
             <li>{{ $kasir->name }} ({{ $kasir->email }})</li>
         @endforeach
     </ul>
 
+    <h2>Tambah Akun Kasir</h2>
     <form method="POST" action="/kasir">
         @csrf
         <label for="name">Nama</label>
@@ -34,5 +23,4 @@
 
         <button type="submit">Buat Akun Kasir</button>
     </form>
-</body>
-</html>
+@endsection

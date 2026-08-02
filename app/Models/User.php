@@ -31,4 +31,9 @@ class User extends Authenticatable
             'role' => UserRole::class,
         ];
     }
+
+    public function isOwner(): bool
+    {
+        return $this->role === UserRole::Owner;
+    }
 }

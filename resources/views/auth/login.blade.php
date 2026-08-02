@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Login - POS Skripsi</title>
-</head>
-<body>
-    <h1>Login</h1>
+@extends('layouts.app')
 
-    @if ($errors->any())
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+@section('title', 'Login')
 
+@section('content')
     <form method="POST" action="/login">
         @csrf
         <label for="email">Email</label>
@@ -25,5 +13,4 @@
 
         <button type="submit">Login</button>
     </form>
-</body>
-</html>
+@endsection
