@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KasController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PergerakanStokController;
@@ -40,6 +42,10 @@ Route::middleware(['auth', 'owner'])->group(function () {
 
     Route::get('/barang/{barang}/pergerakan-stok', [PergerakanStokController::class, 'index']);
     Route::post('/barang/{barang}/stok-masuk', [StokMasukController::class, 'store']);
+
+    Route::get('/kas', [KasController::class, 'index']);
+    Route::get('/laporan/penjualan/pdf', [LaporanController::class, 'penjualan']);
+    Route::get('/laporan/pengeluaran/pdf', [LaporanController::class, 'pengeluaran']);
 
     Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
     Route::post('/pengeluaran', [PengeluaranController::class, 'store']);

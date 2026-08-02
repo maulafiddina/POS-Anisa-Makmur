@@ -12,6 +12,7 @@
             @if (auth()->user()->isOwner())
                 <a href="/kategori">Kategori</a>
                 <a href="/pengeluaran">Pengeluaran</a>
+                <a href="/kas">Kas &amp; Laporan</a>
                 <a href="/kasir">Kasir</a>
             @endif
 

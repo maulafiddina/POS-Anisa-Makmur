@@ -17,7 +17,7 @@ class NavigasiTest extends TestCase
         $response = $this->actingAs($owner)->get('/penjualan');
 
         $response->assertOk();
-        foreach (['/penjualan', '/barang', '/kategori', '/pengeluaran', '/kasir'] as $tautan) {
+        foreach (['/penjualan', '/barang', '/kategori', '/pengeluaran', '/kas', '/kasir'] as $tautan) {
             $response->assertSee('href="'.$tautan.'"', escape: false);
         }
     }
@@ -32,7 +32,7 @@ class NavigasiTest extends TestCase
         foreach (['/penjualan', '/barang'] as $tautan) {
             $response->assertSee('href="'.$tautan.'"', escape: false);
         }
-        foreach (['/kategori', '/pengeluaran', '/kasir'] as $tautan) {
+        foreach (['/kategori', '/pengeluaran', '/kas', '/kasir'] as $tautan) {
             $response->assertDontSee('href="'.$tautan.'"', escape: false);
         }
     }
